@@ -7,4 +7,4 @@ void Solver::updateAll(float dt) {
   }
 }
 
-void Solver::addBall(Ball &ball) { balls.push_back(ball); }
+void Solver::addBall(Ball ball) { balls.push_back(ball); }

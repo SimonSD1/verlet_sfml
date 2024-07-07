@@ -7,7 +7,7 @@ struct Solver {
 public:
   std::vector<Ball> balls;
 
-  void addBall(Ball &ball);
+  void addBall(Ball ball);
   void updateAll(float dt);
 };
 #endif // !SOLVER_H
