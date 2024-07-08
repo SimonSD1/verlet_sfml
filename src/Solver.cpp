@@ -1,9 +1,7 @@
-#include "../include/solver.hpp"
+#include "../include/Solver.hpp"
 void Solver::updateAll(float dt) {
   for (Ball &ball : balls) {
-    // std::cout << ball.pos.y << std::endl;
     ball.updatePos(dt);
-    //    std::cout << ball.pos.y << std::endl;
   }
 }
 

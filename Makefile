@@ -1,14 +1,14 @@
-build/app: bin/main.o bin/Ball.o bin/solver.o bin/renderer.o
-	g++ bin/main.o bin/Ball.o bin/solver.o bin/renderer.o -o build/app -lsfml-graphics -lsfml-window -lsfml-system
+build/app: bin/Main.o bin/Ball.o bin/Solver.o bin/Renderer.o
+	g++ bin/Main.o bin/Ball.o bin/Solver.o bin/Renderer.o -o build/app -lsfml-graphics -lsfml-window -lsfml-system
 
-bin/renderer.o: src/renderer.cpp
-	g++ -c src/renderer.cpp -o bin/renderer.o
+bin/Renderer.o: src/Renderer.cpp
+	g++ -c src/Renderer.cpp -o bin/Renderer.o
 
-bin/main.o: src/main.cpp
-	g++ -c src/main.cpp -o bin/main.o
+bin/Main.o: src/Main.cpp
+	g++ -c src/Main.cpp -o bin/Main.o
 
 bin/Ball.o: src/Ball.cpp
 	g++ -c src/Ball.cpp -o bin/Ball.o
 
-bin/solver.o: src/solver.cpp
-	g++ -c src/solver.cpp -o bin/solver.o
+bin/Solver.o: src/Solver.cpp
+	g++ -c src/Solver.cpp -o bin/Solver.o

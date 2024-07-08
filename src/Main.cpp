@@ -1,8 +1,8 @@
-#include "../include/main.hpp"
+#include "../include/Main.hpp"
 #include "../include/Ball.hpp"
 #include "../include/Renderer.hpp"
-#include "../include/solver.hpp"
-#include <SFML/System/Vector2.hpp>
+#include "../include/Solver.hpp"
+
 // gestion des events et input
 void inputHandler(sf::Event event, sf::RenderWindow &window) {
   if (event.type == sf::Event::Closed) {
@@ -11,9 +11,9 @@ void inputHandler(sf::Event event, sf::RenderWindow &window) {
 }
 
 int main(int argc, char *argv[]) {
+
   sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT),
                           "mon titre"); // Use sf::RenderWindow for rendering
-
   sf::Clock clock;
   Ball ball;
   Solver solver;
