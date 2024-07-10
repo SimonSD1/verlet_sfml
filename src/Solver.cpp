@@ -1,4 +1,5 @@
 #include "../include/Solver.hpp"
+#include "../include/Ball.hpp"
 #include <SFML/System/Vector2.hpp>
 #include <cmath>
 
@@ -9,7 +10,11 @@ void Solver::updateAll(float dt) {
   }
 }
 
-void Solver::addBall(Ball ball) { balls.push_back(ball); }
+void Solver::addBall() {
+  Ball newBall = Ball{{300.0f, 300.0f}, {0.0f, 0.0f}, {0.0f, 100.0f}};
+
+  balls.push_back(newBall);
+}
 
 void Solver::solveConstraint() {
   for (Ball &ball : balls) {

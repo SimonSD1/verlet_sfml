@@ -12,3 +12,9 @@ bin/Ball.o: src/Ball.cpp include/Ball.hpp
 
 bin/Solver.o: src/Solver.cpp include/Solver.hpp
 	g++ -c src/Solver.cpp -o bin/Solver.o
+
+
+bin/Main.o: include/Ball.hpp include/Solver.hpp include/Renderer.hpp
+bin/Ball.o: include/Ball.hpp
+bin/Solver.o: include/Solver.hpp
+bin/Renderer.o: include/Renderer.hpp

@@ -10,7 +10,7 @@ public:
   float constraintRadius;
   std::vector<Ball> balls;
 
-  void addBall(Ball ball);
+  void addBall();
   void updateAll(float dt);
 
   void solveConstraint();

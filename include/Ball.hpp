@@ -5,8 +5,6 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 
-const sf::Vector2f gravity{0.0f, 9.81f};
-
 struct Ball {
   sf::Vector2f pos;
   sf::Vector2f vel;
