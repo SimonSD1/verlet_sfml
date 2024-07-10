@@ -19,9 +19,12 @@ int main(int argc, char *argv[]) {
   Solver solver;
   Renderer renderer{window, solver};
 
-  ball.acc = {0.0f, 0.0f};
+  solver.constraintRadius = 200.0f;
+  solver.constraintPos = {800 / 2, 600 / 2};
+
+  ball.acc = gravity;
   ball.vel = {0.0f, 0.0f};
-  ball.pos = {000.0f, 000.0f};
+  ball.pos = {250.0f, 300.0f};
 
   solver.addBall(ball);
   float time_total = 0.0f;
@@ -39,7 +42,10 @@ int main(int argc, char *argv[]) {
     float new_total_time = clock.getElapsedTime().asSeconds();
     float elapsed_time = new_total_time - time_total;
     time_total = new_total_time;
-    solver.updateAll(elapsed_time);
+
+    float dt = clock.restart().asSeconds();
+
+    solver.updateAll(dt);
     renderer.render();
     window.display();
   }
