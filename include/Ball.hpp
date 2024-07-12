@@ -7,8 +7,9 @@
 
 struct Ball {
   sf::Vector2f pos;
-  sf::Vector2f vel;
+  sf::Vector2f pos_old;
   sf::Vector2f acc;
+  int radius;
 
   void draw(sf::RenderWindow &window);
 

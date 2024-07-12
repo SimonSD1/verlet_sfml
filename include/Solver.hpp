@@ -10,10 +10,12 @@ public:
   float constraintRadius;
   std::vector<Ball> balls;
 
-  void addBall();
-  void updateAll(float dt);
+  void addBall(sf::Vector2f pos, int radius);
+  void solve(float dt);
 
   void solveConstraint();
+  void solveCollisions();
+  void updatePos(float dt);
   float getConstraintRadius();
 };
 

@@ -2,18 +2,16 @@
 #include <SFML/System/Vector2.hpp>
 
 void Ball::draw(sf::RenderWindow &window) {
-  sf::CircleShape circle(10);
-  circle.setOrigin(10, 10);
+  sf::CircleShape circle(radius);
+  circle.setOrigin(radius, radius);
   circle.setPosition(pos.x, pos.y);
   window.draw(circle); // Draw the circle to the window
 }
 
 void Ball::updatePos(float dt) {
-  sf::Vector2f new_pos = pos + vel * dt + acc * (dt * dt * 0.5f);
-  sf::Vector2f new_vel = vel + (acc + acc) * (dt * 0.5f);
-
-  pos = new_pos;
-  vel = new_vel;
+  sf::Vector2f vel = pos - pos_old;
+  pos_old = pos;
+  pos = pos + vel + acc * (dt * dt);
 }
 
 void Ball::accelerate(sf::Vector2f acceleration) { acc += acceleration; }

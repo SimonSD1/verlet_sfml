@@ -1,6 +1,10 @@
 #include "../include/Main.hpp"
 #include "../include/Renderer.hpp"
 #include "../include/Solver.hpp"
+#include <SFML/System/Clock.hpp>
+#include <SFML/System/Sleep.hpp>
+#include <SFML/System/Time.hpp>
+#include <iostream>
 
 // gestion des events et input
 void inputHandler(sf::Event event, sf::RenderWindow &window) {
@@ -12,16 +16,20 @@ void inputHandler(sf::Event event, sf::RenderWindow &window) {
 int main(int argc, char *argv[]) {
 
   sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT),
-                          "mon titre"); // Use sf::RenderWindow for rendering
-  sf::Clock clock;
+                          "verlet"); // Use sf::RenderWindow for rendering
+  window.setFramerateLimit(120);
+  sf::Clock dtClock;
+  sf::Clock totalCLock;
   Solver solver;
   Renderer renderer{window, solver};
   float dt;
+  int nb_balls = 0;
 
   solver.constraintRadius = 200.0f;
-  solver.constraintPos = {800 / 2, 600 / 2};
+  solver.constraintPos = {800.0f / 2, 600.0f / 2};
 
-  solver.addBall();
+  solver.addBall({400.0f, 300.0f}, 10);
+  solver.addBall({401.0f, 300.0f}, 20);
 
   while (window.isOpen()) {
     sf::Event event;
@@ -33,9 +41,15 @@ int main(int argc, char *argv[]) {
 
     window.clear();
 
-    dt = clock.restart().asSeconds();
+    if (nb_balls < 30) {
 
-    solver.updateAll(dt);
+      solver.addBall({401.0f, 300.0f}, nb_balls);
+      nb_balls++;
+    }
+
+    dt = dtClock.restart().asSeconds();
+    std::cout << dt << std::endl;
+    solver.solve(dt);
     renderer.render();
     window.display();
   }

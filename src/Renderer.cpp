@@ -3,7 +3,7 @@
 void Renderer::render() {
 
   sf::CircleShape constraint_background{solver.constraintRadius};
-  constraint_background.setFillColor(sf::Color::Green);
+  constraint_background.setFillColor(sf::Color::Blue);
   constraint_background.setPosition(solver.constraintPos);
   constraint_background.setOrigin(solver.getConstraintRadius(),
                                   solver.getConstraintRadius());
