@@ -13,6 +13,8 @@ struct Ball {
 
   void draw(sf::RenderWindow &window);
 
+  Ball(sf::Vector2f initPos, int initRadius);
+
   void updatePos(float dt);
 
   void accelerate(sf::Vector2f acceleration);

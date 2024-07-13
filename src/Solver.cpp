@@ -2,7 +2,6 @@
 #include "../include/Ball.hpp"
 #include <SFML/System/Vector2.hpp>
 #include <cmath>
-#include <iostream>
 
 void Solver::solve(float dt) {
   for (int i = 0; i < 5; i++) {
@@ -20,7 +19,7 @@ void Solver::updatePos(float dt) {
 }
 
 void Solver::addBall(sf::Vector2f pos, int radius) {
-  Ball newBall = Ball{pos, {0.0f, 0.0f}, {0.0f, 100.0f}, radius};
+  Ball newBall = Ball{pos, radius};
 
   balls.push_back(newBall);
 }

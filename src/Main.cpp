@@ -17,19 +17,16 @@ int main(int argc, char *argv[]) {
 
   sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT),
                           "verlet"); // Use sf::RenderWindow for rendering
-  window.setFramerateLimit(120);
+  window.setFramerateLimit(144);
+
   sf::Clock dtClock;
-  sf::Clock totalCLock;
-  Solver solver;
+  sf::Clock spawnClock;
+
+  Solver solver{{800.0f / 2, 600.0f / 2}, 200.0f};
   Renderer renderer{window, solver};
+
   float dt;
   int nb_balls = 0;
-
-  solver.constraintRadius = 200.0f;
-  solver.constraintPos = {800.0f / 2, 600.0f / 2};
-
-  solver.addBall({400.0f, 300.0f}, 10);
-  solver.addBall({401.0f, 300.0f}, 20);
 
   while (window.isOpen()) {
     sf::Event event;
@@ -41,14 +38,14 @@ int main(int argc, char *argv[]) {
 
     window.clear();
 
-    if (nb_balls < 30) {
-
-      solver.addBall({401.0f, 300.0f}, nb_balls);
+    if (nb_balls < 2000 && spawnClock.getElapsedTime().asSeconds() > 0.25) {
+      solver.addBall({300.0f, 250.0f}, 6);
       nb_balls++;
+      std::cout << nb_balls << std::endl;
+      spawnClock.restart();
     }
 
     dt = dtClock.restart().asSeconds();
-    std::cout << dt << std::endl;
     solver.solve(dt);
     renderer.render();
     window.display();
