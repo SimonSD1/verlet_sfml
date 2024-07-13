@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   sf::Clock spawnClock;
 
   Solver solver{{800.0f / 2, 600.0f / 2}, 200.0f};
-  Renderer renderer{window, solver};
+  Renderer renderer{window, solver, "include/ubuntu.regular.ttf"};
 
   float dt;
   int nb_balls = 0;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 
     dt = dtClock.restart().asSeconds();
     solver.solve(dt);
-    renderer.render();
+    renderer.render(dt);
     window.display();
   }
 
